@@ -1,8 +1,6 @@
-import Vue from 'vue'
-import { h } from 'vue'
+import Vue, { h } from 'vue'
 
 import MyComponent from './MyComponent.vue'
-
 
 new Vue({
   setup(this, props, ctx) {
