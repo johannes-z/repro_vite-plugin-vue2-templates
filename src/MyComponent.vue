@@ -1,4 +1,4 @@
-<script lang="test">
+<script lang="ts">
 // Add the following template to make it work...
 /*
 <template>
