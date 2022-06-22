@@ -1,9 +1,34 @@
-import Vue, { h } from 'vue'
+import Vue, { h, reactive, readonly } from 'vue'
 
-import MyComponent from './MyComponent.vue'
+class MyObject {
+  constructor () {
+    console.log('MyObject')
+  }
+
+  public log () {
+    console.log('log');
+  }
+}
 
 new Vue({
   setup(this, props, ctx) {
-    return () => h(MyComponent)
+    const data = reactive({
+      number: 0,
+      object: {
+        test: 'test'
+      },
+      array: ['test'],
+      complex: new MyObject()
+    })
+
+    return {
+      data: readonly(data)
+    }
   },
+
+  render () {
+    console.log(this.data);
+    this.data.complex.log()
+    return h('div', `Count: ${this.data.number}`)
+  }
 }).$mount('#app')
