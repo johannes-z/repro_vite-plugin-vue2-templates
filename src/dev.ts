@@ -1,34 +1,13 @@
 import Vue, { h, reactive, readonly } from 'vue'
-
-class MyObject {
-  constructor () {
-    console.log('MyObject')
-  }
-
-  public log () {
-    console.log('log');
-  }
-}
+import DynamicHeading from './DynamicHeading'
 
 new Vue({
   setup(this, props, ctx) {
-    const data = reactive({
-      number: 0,
-      object: {
-        test: 'test'
-      },
-      array: ['test'],
-      complex: new MyObject()
-    })
-
-    return {
-      data: readonly(data)
-    }
+    console.log(DynamicHeading);
+    return () => h(DynamicHeading, {
+      props: {
+        level: 1
+      }
+    }, 'Hello World')
   },
-
-  render () {
-    console.log(this.data);
-    this.data.complex.log()
-    return h('div', `Count: ${this.data.number}`)
-  }
 }).$mount('#app')
